@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#123b63">
+<title>Ma Scolarité</title>
+<style>
+:root{--navy:#123b63;--blue:#1769aa;--pale:#eef5fb;--ink:#182535;--muted:#64748b;--line:#dbe4ee;--white:#fff;--green:#147d64;--red:#b42318}
+*{box-sizing:border-box}body{margin:0;background:#f5f8fc;color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:10px 14px;background:var(--blue);color:#fff;font-weight:650}button.secondary{background:#e8eff7;color:var(--navy)}button.danger{background:#fff0ef;color:var(--red)}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #f5b942;outline-offset:2px}header{background:var(--navy);color:#fff;padding:14px max(16px,calc((100vw - 1120px)/2));display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}header h1{font-size:1.2rem;margin:0}header p{margin:2px 0 0;color:#d7e8f8;font-size:.88rem}.header-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.header-actions button,.header-actions select{background:#fff;color:var(--navy)}.layout{max-width:1120px;margin:22px auto;padding:0 16px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:20px}.sidebar,.panel,.hero,.stat{background:var(--white);border:1px solid var(--line);border-radius:16px}.sidebar{padding:12px;height:max-content;position:sticky;top:12px}.navbtn{display:block;width:100%;text-align:left;background:transparent;color:var(--ink);margin:3px 0;font-weight:550}.navbtn.active,.navbtn:hover{background:var(--pale);color:var(--blue)}main{min-width:0}.hero{padding:26px;background:linear-gradient(120deg,#fff,#eaf4ff);margin-bottom:16px}.hero h2{font-size:clamp(1.5rem,3vw,2.2rem);line-height:1.15;margin:0 0 10px;color:var(--navy)}.hero p{margin:0 0 18px;color:#43566b;max-width:650px}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:16px}.stat{padding:16px}.stat span{display:block;color:var(--muted);font-size:.88rem}.stat strong{display:block;font-size:1.55rem;margin-top:4px}.panel{padding:20px;margin-bottom:16px}.panel h2{margin:0 0 14px;font-size:1.25rem}.panel h3{margin:14px 0 8px}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}.field label{font-weight:650;font-size:.92rem}.field input,.field select,.field textarea,input,select,textarea{width:100%;min-width:0;padding:10px 11px;border:1px solid #cbd6e2;border-radius:9px;background:#fff;color:var(--ink)}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.muted{color:var(--muted)}.notice{background:#fff8e6;border:1px solid #f3df9b;padding:12px 14px;border-radius:10px;color:#6b4c0e;margin-bottom:14px}.success{background:#eaf8f1;color:#14684f;border:1px solid #b9e5d4;padding:10px 12px;border-radius:10px;margin:10px 0}.list{display:grid;gap:8px}.item{border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;justify-content:space-between;align-items:center;gap:10px}.item small{display:block;color:var(--muted)}.empty{padding:18px;border:1px dashed #bdcddd;border-radius:10px;color:var(--muted);text-align:center}.hidden{display:none!important}footer{max-width:1120px;margin:0 auto;padding:0 16px 28px;color:var(--muted);font-size:.86rem}.hamb{display:none}.rtl{direction:rtl;text-align:right}
+@media(max-width:760px){.layout{display:block;margin-top:12px}.sidebar{position:static;margin-bottom:14px}.sidebar.closed{display:none}.hamb{display:inline-block}.stats{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}.hero{padding:20px}.panel{padding:16px}.item{align-items:flex-start;flex-wrap:wrap}}
+</style>
+</head>
+<body>
+<header>
+<div><h1>◈ Ma Scolarité</h1><p id="subtitle">Une école, une organisation claire.</p></div>
+<div class="header-actions"><button class="hamb" id="menuToggle" aria-expanded="true">☰ Menu</button><select id="language" aria-label="Langue"><option value="fr">Français</option><option value="en">English</option><option value="ar">العربية</option></select><button id="loginTop" class="secondary">Se connecter</button></div>
+</header>
+<div class="layout">
+<nav class="sidebar" id="sidebar" aria-label="Menu principal">
+<button class="navbtn active" data-page="home">⌂ Accueil</button>
+<button class="navbtn" data-page="students">♙ Élèves · 9e à Terminale</button>
+<button class="navbtn" data-page="subjects">▤ Matières</button>
+<button class="navbtn" data-page="schedule">◷ Emploi du temps</button>
+<button class="navbtn" data-page="school">▦ Mon école</button>
+<button class="navbtn" data-page="teachers">♧ Professeurs</button>
+<button class="navbtn" data-page="messages">✉ Messagerie</button>
+<button class="navbtn" data-page="profile">◎ Mon profil</button>
+<button class="navbtn" data-page="login">⇥ Se connecter</button>
+</nav>
+<main id="main" tabindex="-1">
+<section class="hero"><h2>Bienvenue dans Ma Scolarité</h2><p>Organisez votre école, suivez les élèves, gérez les matières et les horaires dans un espace simple, adapté aux téléphones.</p><div class="actions"><button data-go="students">＋ Ajouter un élève</button><button class="secondary" data-go="subjects">Gérer les matières</button></div></section>
+<div class="stats"><div class="stat"><span>Élèves enregistrés</span><strong id="studentCount">0</strong></div><div class="stat"><span>Matières</span><strong id="subjectCount">0</strong></div><div class="stat"><span>Effectif de l’école</span><strong id="schoolCount">À renseigner</strong></div></div>
+<section class="panel"><h2>Pour commencer</h2><div class="list"><div class="item"><span>1. Ajoutez les informations de votre école</span><button class="secondary" data-go="school">Ouvrir</button></div><div class="item"><span>2. Enregistrez les élèves</span><button class="secondary" data-go="students">Ouvrir</button></div><div class="item"><span>3. Créez les matières et horaires</span><button class="secondary" data-go="subjects">Ouvrir</button></div></div></section>
+<div class="notice">Prototype de travail : les données sont enregistrées dans ce navigateur uniquement. Ce prototype ne fournit pas encore de connexion sécurisée ni de synchronisation en ligne.</div>
+</main>
+</div>
+<footer>Ma Scolarité · Version de départ · Pensez à exporter régulièrement une sauvegarde.</footer>
+<script>
+(function(){
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const KEY='ma-scolarite-data-v1';
+let state={students:[],subjects:[],teachers:[],schedule:[],school:{name:'',total:'',entry:'',exit:'',daysOff:''},profile:{name:'',role:'Élève'},messages:[]};
+try{const saved=localStorage.getItem(KEY);if(saved)state={...state,...JSON.parse(saved)}}catch(e){}
+let page='home',lang='fr';
+const translations={
+fr:{home:'Accueil',students:'Élèves · 9e à Terminale',subjects:'Matières',schedule:'Emploi du temps',school:'Mon école',teachers:'Professeurs',messages:'Messagerie',profile:'Mon profil',login:'Se connecter',welcome:'Bienvenue dans Ma Scolarité',subtitle:'Une école, une organisation claire.',empty:'Aucun élément enregistré pour le moment.',save:'Enregistrer',name:'Nom complet',class:'Classe',phone:'Téléphone',addStudent:'Ajouter un élève',subject:'Nom de la matière',addSubject:'Ajouter une matière',teacher:'Nom du professeur',addTeacher:'Ajouter un professeur',schoolName:'Nom de l’école',total:'Effectif total de l’école',entry:'Heure d’entrée',exit:'Heure de sortie',daysOff:'Jours de repos',day:'Jour',time:'Heure',addSlot:'Ajouter un horaire',message:'Message',send:'Ajouter le message',role:'Rôle',localLogin:'Créer une session locale de démonstration',loginNote:'Ceci n’est pas une authentification sécurisée. N’utilisez pas de vrai mot de passe.',export:'Exporter la sauvegarde',import:'Importer une sauvegarde',delete:'Supprimer',noMessages:'Aucun message.',profileSave:'Enregistrer le profil',logout:'Quitter la session locale',welcomeUser:'Session locale ouverte pour',confirmDelete:'Supprimer cet élément ?',saved:'Enregistré.'},
+en:{home:'Home',students:'Students · Grade 9 to final year',subjects:'Subjects',schedule:'Timetable',school:'My school',teachers:'Teachers',messages:'Messages',profile:'My profile',login:'Sign in',welcome:'Welcome to Ma Scolarité',subtitle:'A school, clearly organized.',empty:'Nothing saved yet.',save:'Save',name:'Full name',class:'Class',phone:'Phone',addStudent:'Add a student',subject:'Subject name',addSubject:'Add a subject',teacher:'Teacher name',addTeacher:'Add a teacher',schoolName:'School name',total:'Total school enrollment',entry:'Start time',exit:'End time',daysOff:'Days off',day:'Day',time:'Time',addSlot:'Add timetable entry',message:'Message',send:'Add message',role:'Role',localLogin:'Create a local demo session',loginNote:'This is not secure authentication. Do not use a real password.',export:'Export backup',import:'Import backup',delete:'Delete',noMessages:'No messages.',profileSave:'Save profile',logout:'End local session',welcomeUser:'Local session opened for',confirmDelete:'Delete this item?',saved:'Saved.'},
+ar:{home:'الرئيسية',students:'التلاميذ · من التاسعة إلى النهائية',subjects:'المواد',schedule:'الجدول الدراسي',school:'مدرستي',teachers:'المعلمون',messages:'الرسائل',profile:'ملفي الشخصي',login:'تسجيل الدخول',welcome:'مرحباً بكم في مدرستي',subtitle:'مدرسة منظمة بوضوح.',empty:'لا توجد عناصر محفوظة بعد.',save:'حفظ',name:'الاسم الكامل',class:'القسم',phone:'الهاتف',addStudent:'إضافة تلميذ',subject:'اسم المادة',addSubject:'إضافة مادة',teacher:'اسم المعلم',addTeacher:'إضافة معلم',schoolName:'اسم المدرسة',total:'إجمالي عدد التلاميذ',entry:'وقت الدخول',exit:'وقت الخروج',daysOff:'أيام الراحة',day:'اليوم',time:'الوقت',addSlot:'إضافة توقيت',message:'الرسالة',send:'إضافة الرسالة',role:'الدور',localLogin:'إنشاء جلسة تجريبية محلية',loginNote:'هذا ليس تسجيل دخول آمناً. لا تستخدم كلمة مرور حقيقية.',export:'تصدير نسخة احتياطية',import:'استيراد نسخة احتياطية',delete:'حذف',noMessages:'لا توجد رسائل.',profileSave:'حفظ الملف الشخصي',logout:'إنهاء الجلسة المحلية',welcomeUser:'تم فتح الجلسة المحلية لـ',confirmDelete:'هل تريد حذف هذا العنصر؟',saved:'تم الحفظ.'}
+};
+const t=k=>translations[lang][k]||translations.fr[k]||k;
+function persist(){localStorage.setItem(KEY,JSON.stringify(state));updateStats()}
+function updateStats(){$('#studentCount').textContent=state.students.length;$('#subjectCount').textContent=state.subjects.length;$('#schoolCount').textContent=state.school.total||'À renseigner'}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function itemList(items,fields){if(!items.length)return '<div class="empty">'+t('empty')+'</div>';return '<div class="list">'+items.map((x,i)=>'<div class="item"><div><strong>'+esc(x[fields[0]]||'')+'</strong><small>'+fields.slice(1).map(f=>esc(x[f]||'')).filter(Boolean).join(' · ')+'</small></div><button class="danger" data-delete="'+fields[2]+'" data-index="'+i+'">'+t('delete')+'</button></div>').join('')+'</div>'}
+function field(label,name,type='text',value='',required=false){return '<div class="field"><label for="'+name+'">'+label+'</label><input id="'+name+'" name="'+name+'" type="'+type+'" value="'+esc(value)+'" '+(required?'required':'')+'></div>'}
+function form(title,fields,button,extra=''){return '<section class="panel"><h2>'+title+'</h2><form class="gridform" data-form="'+extra+'">'+fields+'<div class="actions"><button type="submit">'+button+'</button></div></form></section>'}
+function render(){
+$$('.navbtn').forEach(b=>{b.classList.toggle('active',b.dataset.page===page);b.textContent=({'home':'⌂ ','students':'♙ ','subjects':'▤ ','schedule':'◷ ','school':'▦ ','teachers':'♧ ','messages':'✉ ','profile':'◎ ','login':'⇥ '}[b.dataset.page]||'')+t(b.dataset.page)});
+$('#subtitle').textContent=t('subtitle');document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';$('#loginTop').textContent=state.profile.loggedIn?state.profile.name:t('login');
+let html='';
+if(page==='home'){html='<section class="hero"><h2>'+t('welcome')+'</h2><p>Organisez votre école, suivez les élèves, gérez les matières et les horaires dans un espace simple, adapté aux téléphones.</p><div class="actions"><button data-go="students">＋ '+t('addStudent')+'</button><button class="secondary" data-go="subjects">'+t('subjects')+'</button></div></section><div class="stats"><div class="stat"><span>Élèves enregistrés</span><strong id="studentCount">'+state.students.length+'</strong></div><div class="stat"><span>'+t('subjects')+'</span><strong id="subjectCount">'+state.subjects.length+'</strong></div><div class="stat"><span>'+t('total')+'</span><strong id="schoolCount">'+esc(state.school.total||'À renseigner')+'</strong></div></div><section class="panel"><h2>Pour commencer</h2><div class="list">'+[['school','1. '+t('schoolName')],['students','2. '+t('addStudent')],['subjects','3. '+t('addSubject')]].map(a=>'<div class="item"><span>'+a[1]+'</span><button class="secondary" data-go="'+a[0]+'">Ouvrir</button></div>').join('')+'</div></section><div class="notice">Prototype de travail : les données restent dans ce navigateur. Pas encore de connexion sécurisée ni de synchronisation en ligne.</div>'}
+else if(page==='students'){html=form(t('addStudent'),field(t('name'),'sname','text','',true)+field(t('class'),'sclass')+field(t('phone'),'sphone','tel'),'Ajouter','student')+'<section class="panel"><h2>Élèves enregistrés ('+state.students.length+')</h2>'+itemList(state.students,['name','class','phone','students'])+'</section>'}
+else if(page==='subjects'){html=form(t('addSubject'),field(t('subject'),'subname','text','',true),'Ajouter','subject')+'<section class="panel"><h2>'+t('subjects')+'</h2>'+itemList(state.subjects,['name','teacher','subjects'])+'</section>'}
+else if(page==='teachers'){html=form(t('addTeacher'),field(t('teacher'),'tname','text','',true)+field(t('phone'),'tphone','tel')+field('Spécialité','tspecialty'),'Ajouter','teacher')+'<section class="panel"><h2>'+t('teachers')+'</h2>'+itemList(state.teachers,['name','specialty','phone','teachers'])+'</section>'}
+else if(page==='school'){html='<section class="panel"><h2>'+t('school')+'</h2><form data-form="school">'+field(t('schoolName'),'schoolname','text',state.school.name,true)+field(t('total'),'schooltotal','number',state.school.total)+ '<div class="grid2">'+field(t('entry'),'schoolentry','time',state.school.entry)+field(t('exit'),'schoolexit','time',state.school.exit)+'</div>'+field(t('daysOff'),'schooldays','text',state.school.daysOff)+'<div class="actions"><button>'+t('save')+'</button></div></form></section><section class="panel"><h2>Sauvegarde</h2><p class="muted">Conserve une copie avant de changer d’appareil ou de navigateur.</p><div class="actions"><button id="export">'+t('export')+'</button><label class="secondary" style="padding:10px 14px;border-radius:10px;cursor:pointer">'+t('import')+'<input id="import" type="file" accept="application/json" hidden></label></div></section>'}
+else if(page==='schedule'){html=form(t('addSlot'),'<div class="grid2">'+field(t('day'),'slotday','text','',true)+field(t('time'),'slottime','text','',true)+'</div>'+field(t('class'),'slotclass')+field(t('subject'),'slotsubject'),'Ajouter','slot')+'<section class="panel"><h2>'+t('schedule')+'</h2>'+itemList(state.schedule,['day','time','subject','schedule'])+'</section>'}
+else if(page==='messages'){html=form(t('message'),'<div class="field"><label for="msg">'+t('message')+'</label><textarea id="msg" required rows="3"></textarea></div>','Ajouter','message')+'<section class="panel"><h2>'+t('messages')+'</h2>'+(state.messages.length?itemList(state.messages,['text','author','messages']):'<div class="empty">'+t('noMessages')+'</div>')+'</section>'}
+else if(page==='profile'){html='<section class="panel"><h2>'+t('profile')+'</h2><form data-form="profile">'+field(t('name'),'profilename','text',state.profile.name,true)+'<div class="field"><label for="profilerole">'+t('role')+'</label><select id="profilerole"><option>Élève</option><option>Parent</option><option>Professeur</option><option>Directeur</option></select></div>'+field(t('phone'),'profilephone','tel',state.profile.phone||'')+'<div class="actions"><button>'+t('profileSave')+'</button></div></form></section>'}
+else if(page==='login'){html='<section class="panel"><h2>'+t('login')+'</h2><div class="notice">'+t('loginNote')+'</div><form data-form="login">'+field(t('name'),'loginname','text',state.profile.name,true)+'<div class="field"><label for="loginrole">'+t('role')+'</label><select id="loginrole"><option>Élève</option><option>Parent</option><option>Professeur</option><option>Directeur</option></select></div><div class="actions"><button>'+t('localLogin')+'</button></div></form>'+(state.profile.loggedIn?'<div class="success">'+t('welcomeUser')+' '+esc(state.profile.name)+'.</div><button class="secondary" id="logout">'+t('logout')+'</button>':'')+'</section>'}
+$('#main').innerHTML=html;
+}
+function go(p){page=p;render();$$('.navbtn').forEach(b=>b.classList.toggle('active',b.dataset.page===p));if(innerWidth<760)$('#sidebar').classList.add('closed');$('#main').focus({preventScroll:true});}
+document.addEventListener('click',e=>{
+const nav=e.target.closest('[data-page]');if(nav){go(nav.dataset.page);return}
+const goBtn=e.target.closest('[data-go]');if(goBtn){go(goBtn.dataset.go);return}
+const del=e.target.closest('[data-delete]');if(del){const key=del.dataset.delete,idx=Number(del.dataset.index);if(confirm(t('confirmDelete'))){state[key].splice(idx,1);persist();render()}return}
+if(e.target.id==='menuToggle'){const closed=$('#sidebar').classList.toggle('closed');e.target.setAttribute('aria-expanded',String(!closed));return}
+if(e.target.id==='loginTop'){go(state.profile.loggedIn?'profile':'login');return}
+if(e.target.id==='export'){const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='ma-scolarite-sauvegarde.json';a.click();URL.revokeObjectURL(a.href);return}
+if(e.target.id==='logout'){state.profile.loggedIn=false;persist();render()}
+});
+document.addEventListener('submit',e=>{
+const f=e.target.closest('form[data-form]');if(!f)return;e.preventDefault();const val=id=>($('#'+id)?.value||'').trim();
+switch(f.dataset.form){
+case 'student':state.students.push({name:val('sname'),class:val('sclass'),phone:val('sphone')});break;
+case 'subject':state.subjects.push({name:val('subname'),teacher:''});break;
+case 'teacher':state.teachers.push({name:val('tname'),phone:val('tphone'),specialty:val('tspecialty')});break;
+case 'school':state.school={name:val('schoolname'),total:val('schooltotal'),entry:val('schoolentry'),exit:val('schoolexit'),daysOff:val('schooldays')};break;
+case 'slot':state.schedule.push({day:val('slotday'),time:val('slottime'),class:val('slotclass'),subject:val('slotsubject')});break;
+case 'message':state.messages.push({text:val('msg'),author:state.profile.name||'Utilisateur local'});break;
+case 'profile':state.profile={...state.profile,name:val('profilename'),role:val('profilerole'),phone:val('profilephone')};break;
+case 'login':state.profile={...state.profile,name:val('loginname'),role:val('loginrole'),loggedIn:true};break;
+}
+persist();render();
+});
+$('#language').addEventListener('change',e=>{lang=e.target.value;render()});
+document.addEventListener('change',e=>{if(e.target.id==='import'&&e.target.files[0]){const reader=new FileReader();reader.onload=()=>{try{const data=JSON.parse(reader.result);if(!data||typeof data!=='object')throw Error();state={...state,...data};persist();render();alert('Sauvegarde importée.')}catch(err){alert('Fichier de sauvegarde invalide.')}};reader.readAsText(e.target.files[0])}});
+updateStats();render();
+})();
+</script>
+</body>
+</html>
